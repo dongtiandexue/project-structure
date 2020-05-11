@@ -33,12 +33,31 @@ public class BeanMapperUtils {
         MAPPER.map(source, destination);
     }
 
-    public static <T> List<T> mapList(Collection sourceList, Class<T> destinationClass) {
-        List<T> destinationList = new ArrayList<>();
-        for (Object sourceObject : sourceList) {
-            destinationList.add(MAPPER.map(sourceObject, destinationClass));
+    public static <S, D> List<D> mapList(Iterable<S> sourceList, Class<D> destinationClass) {
+        if(null == sourceList){
+            return null;
+        }
+        List<D> destinationList = new ArrayList<>();
+        for (S source : sourceList) {
+            destinationList.add(MAPPER.map(source, destinationClass));
         }
         return destinationList;
+    }
+    
+    public static <S, D> D[] mapArray(final S[] sourceArray, final Class<D> destinationClass){
+        if(null == sourceArray){
+            return null;
+        }
+        
+        D[] destinationArray = ArrayUtil.newArray(destinationClass, sourceArray.length());
+        
+        int i = 0;
+        for (S source : sourceArray){
+            if(null != source){
+                destinationArray[i] = MAPPER.map(source, destinationClass);
+                i++;
+            }
+        }
     }
 
 }
