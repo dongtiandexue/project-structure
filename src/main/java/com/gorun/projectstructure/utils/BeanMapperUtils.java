@@ -46,21 +46,21 @@ public class BeanMapperUtils {
         return destinationList;
     }
     
-//    public static <S, D> D[] mapArray(final S[] sourceArray, final Class<D> destinationClass){
-//        if(null == sourceArray){
-//            return null;
-//        }
-//
-//        D[] destinationArray = ArrayUtils.newArray(destinationClass, sourceArray.length());
-//
-//        int i = 0;
-//        for (S source : sourceArray){
-//            if(null != source){
-//                destinationArray[i] = MAPPER.map(source, destinationClass);
-//                i++;
-//            }
-//        }
-//        return destinationArray;
-//    }
+   public static <S, D> D[] mapArray(final S[] sourceArray, final Class<D> destinationClass){
+       if(null == sourceArray){
+           return null;
+       }
+
+       D[] destinationArray = (D[])Array.newInstance(destinationClass, sourceArray.length);
+
+       int i = 0;
+       for (S source : sourceArray){
+           if(null != source){
+               destinationArray[i] = MAPPER.map(source, destinationClass);
+               i++;
+           }
+       }
+       return destinationArray;
+   }
 
 }
