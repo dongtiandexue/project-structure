@@ -1,13 +1,10 @@
 package com.gorun.projectstructure.utils;
 
-import com.sun.deploy.util.ArrayUtil;
-import org.apache.commons.lang3.ArrayUtils;
 import org.dozer.DozerBeanMapperBuilder;
 import org.dozer.Mapper;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 /**
